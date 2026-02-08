@@ -1,0 +1,12 @@
+.venv*
+.vscode*
+.playwright-mcp*
+
+.DS_Store
+.env
+CLAUDE.md
+
+*__pycache__*
+*.egg-info*
+
+test_articles*

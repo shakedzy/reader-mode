@@ -1,0 +1,12 @@
+[project]
+name = "reader-mode"
+version = "0.1.0"
+description = "Article extraction from HTML pages to Markdown"
+authors = [
+  {name = "Shaked Zychlinski", email = "shakedzy@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.12",
+]
