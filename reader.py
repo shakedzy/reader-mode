@@ -108,8 +108,16 @@ def _is_hidden(tag: Tag) -> bool:
 
 def _preprocess(soup: BeautifulSoup) -> None:
     """Strip non-content elements from the DOM in-place."""
+    # Unwrap form tags (ASP.NET and similar sites wrap entire page in <form>)
+    # so we keep children but remove the form wrapper
+    for el in list(soup.find_all("form")):
+        if isinstance(el, Tag) and el.parent is not None:
+            el.unwrap()
+
     # Remove tags that never contain article content
     for tag_name in _TAGS_TO_STRIP:
+        if tag_name == "form":
+            continue  # already unwrapped above
         for el in soup.find_all(tag_name):
             el.decompose()
 
